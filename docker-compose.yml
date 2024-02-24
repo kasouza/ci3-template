@@ -28,17 +28,16 @@ services:
             - ./.docker/db:/var/lib/mysql
         restart: always
 
-  #phpmyadmin:
-      #container_name: liguelead-phpmyadmin
-      #image: phpmyadmin/phpmyadmin
-      #links:
-        #- db
-      #environment:
-        #PMA_HOST: db
-        #PMA_PORT: 3306
-        #PMA_ARBITRARY: 1
-      #restart: always
-      #ports:
-        #- "8081:80"
-      #depends_on:
-        #- db
+    phpmyadmin:
+        container_name: ci3-admin
+        image: phpmyadmin/phpmyadmin
+        environment:
+            PMA_HOST: ci3-db
+            PMA_PORT: 3306
+            PMA_USER: root
+            PMA_PASSWORD: root
+        restart: always
+        ports:
+            - "8001:80"
+        depends_on:
+            - db
