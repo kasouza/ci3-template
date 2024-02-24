@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+    php:
+        container_name: ci3
+        build:
+            context: ./
+            dockerfile: Dockerfile.development
+        volumes:
+            - ./:/var/www # Arquivos do projeto
+        ports:
+            - "8000:80"
+        depends_on:
+            - db
+        environment:
+            RUNNING_IN_DOCKER: true
+
+    db:
+        container_name: ci3-db
+        image: mariadb:10.5
+        ports:
+            - "3310:3306"
+        environment:
+            MARIADB_USER: root
+            MARIADB_ROOT_PASSWORD: root
+            MARIADB_DATABASE: ci3
+        volumes:
+            - ./.docker/db:/var/lib/mysql
+        restart: always
+
+  #phpmyadmin:
+      #container_name: liguelead-phpmyadmin
+      #image: phpmyadmin/phpmyadmin
+      #links:
+        #- db
+      #environment:
+        #PMA_HOST: db
+        #PMA_PORT: 3306
+        #PMA_ARBITRARY: 1
+      #restart: always
+      #ports:
+        #- "8081:80"
+      #depends_on:
+        #- db

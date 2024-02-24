@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|public|\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1
+
+Header add Access-Control-Allow-Origin *
+
+SetEnv CI_ENV "development"
