@@ -144,9 +144,10 @@ class CI_Unit_test {
 	 * @param	mixed	$expected
 	 * @param	string	$test_name
 	 * @param	string	$notes
+	 * @param	int		$backtrace_depth
 	 * @return	string
 	 */
-	public function run($test, $expected = TRUE, $test_name = 'undefined', $notes = '')
+	public function run($test, $expected = TRUE, $test_name = 'undefined', $notes = '', $backtrace_depth = 1)
 	{
 		if ($this->active === FALSE)
 		{
@@ -164,7 +165,7 @@ class CI_Unit_test {
 			$extype = gettype($expected);
 		}
 
-		$back = $this->_backtrace();
+		$back = $this->_backtrace($backtrace_depth);
 
 		$report = array (
 			'test_name'     => $test_name,
@@ -332,12 +333,12 @@ class CI_Unit_test {
 	 *
 	 * @return	array
 	 */
-	protected function _backtrace()
+	protected function _backtrace($backtrace_depth = 1)
 	{
 		$back = debug_backtrace();
 		return array(
-			'file' => (isset($back[1]['file']) ? $back[1]['file'] : ''),
-			'line' => (isset($back[1]['line']) ? $back[1]['line'] : '')
+			'file' => (isset($back[$backtrace_depth]['file']) ? $back[$backtrace_depth]['file'] : ''),
+			'line' => (isset($back[$backtrace_depth]['line']) ? $back[$backtrace_depth]['line'] : '')
 		);
 	}
 

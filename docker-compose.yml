@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     php:
-        container_name: ci3
+        container_name: dindin
         build:
             context: ./
             dockerfile: Dockerfile.development
@@ -14,25 +14,26 @@ services:
             - db
         environment:
             RUNNING_IN_DOCKER: true
+            CI_ENV: development
 
     db:
-        container_name: ci3-db
+        container_name: dindin-db
         image: mariadb:10.5
         ports:
             - "3310:3306"
         environment:
             MARIADB_USER: root
             MARIADB_ROOT_PASSWORD: root
-            MARIADB_DATABASE: ci3
+            MARIADB_DATABASE: dindin
         volumes:
             - ./.docker/db:/var/lib/mysql
         restart: always
 
     phpmyadmin:
-        container_name: ci3-admin
+        container_name: dindin-admin
         image: phpmyadmin/phpmyadmin
         environment:
-            PMA_HOST: ci3-db
+            PMA_HOST: dindin-db
             PMA_PORT: 3306
             PMA_USER: root
             PMA_PASSWORD: root

@@ -96,8 +96,8 @@ $db['default'] = array(
 );
 
 if ($_ENV['RUNNING_IN_DOCKER']) {
-	$db['default']['hostname'] = 'ci3-db';
+	$db['default']['hostname'] = 'dindin-db';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = 'root';
-	$db['default']['database'] = 'ci3';
+	$db['default']['database'] = 'dindin';
 }
