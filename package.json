@@ -1,0 +1,21 @@
+{
+	"name": "ci3-template",
+	"version": "1.0.0",
+	"description": "What is CodeIgniter ###################",
+	"main": "webpack.config.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"watch": "webpack --watch",
+		"build": "webpack"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"install": "^0.13.0",
+		"npm": "^10.4.0",
+		"webpack": "^5.90.3",
+		"webpack-cli": "^5.1.4",
+		"webpack.config.js": "^0.0.0"
+	}
+}
