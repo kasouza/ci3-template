@@ -4,10 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends MY_Model
 {
-	protected $table = 'users';
-	protected $primary_key = 'id';
+	public $table = 'users';
+	public $primary_key = 'id';
 
-	protected $fillable = [
+	public $fillable = [
 		'name',
 		'email',
 		'hashed_password',

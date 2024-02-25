@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CodeIgniter
  *
@@ -54,6 +53,8 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+
+date_default_timezone_set('America/Sao_Paulo');
 
 // WTF - For some reason only the $_ENV global is properly set
 $_SERVER['CI_ENV'] = isset($_ENV['CI_ENV']) ? $_ENV['CI_ENV'] : 'development';

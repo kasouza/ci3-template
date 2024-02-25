@@ -105,11 +105,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			border: 1px solid #D0D0D0;
 			box-shadow: 0 0 8px #D0D0D0;
 		}
+
+		.error {
+			color: red;
+			background-color: rgba(255, 0, 0, 0.3);
+			border-color: red;
+		}
 	</style>
 </head>
 
 <body>
 	<div id="container">
+		<?php show_errors(isset($errors) ? $errors : []) ?>
+
 		<?php
 		if (!isset($content)) {
 			die('$content not defined');

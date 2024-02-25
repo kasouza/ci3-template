@@ -20,8 +20,9 @@ class MY_Service
 	public function __construct()
 	{
 		$this->CI = &get_instance();
+
 		if (isset($this->model_name)) {
-			$this->load_model($this->model_name);
+			$this->load_model($this->model_name, 'model');
 		}
 	}
 
@@ -88,7 +89,7 @@ class MY_Service
 	 *
 	 * @return array
 	 */
-	protected function get_errors()
+	public function get_errors()
 	{
 		return $this->errors;
 	}
@@ -100,7 +101,7 @@ class MY_Service
 	 *
 	 * @return array
 	 */
-	protected function get_and_clear_errors()
+	public function get_and_clear_errors()
 	{
 		$errors = $this->errors;
 		$this->errors = [];
@@ -119,8 +120,9 @@ class MY_Service
 			return null;
 		}
 
-		$last_error = end($this->errors);
-		unset(end($this->errors));
+		$idx = count($this->errors) - 1;
+		$last_error = $this->errors[$idx];
+		unset($this->errors[$idx]);
 
 		return $last_error;
 	}
